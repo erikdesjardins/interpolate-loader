@@ -1,2 +1,2 @@
 # interpolate-loader
-Webpack loader to interpolate require results
+Webpack loader to interpolate require results.

@@ -18,7 +18,7 @@ Usually, you will want to pipe the output from this loader into `extract-loader`
 
 ```js
 module.exports = {
-  entry: 'file!extract!interpolate!manifest.json',
+  entry: 'file?name=[name].[ext]!extract!interpolate!manifest.json',
   module: {
     loaders: [
       { test: /\.js$/i, loader: 'file?name=[name].[hash:6].[ext]' },

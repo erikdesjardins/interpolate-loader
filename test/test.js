@@ -41,6 +41,11 @@ test('custom prefix/suffix', t => {
 		'module.exports = "" + require("foo") + " {{hi}}";'
 	);
 	t.is(
+		loader.call({ query: '?prefix=%7B.&suffix=.%7D' }, '{.foo.} {bar}'),
+		'module.exports = "" + require("foo") + " {bar}";',
+		'escaping regex characters'
+	);
+	t.is(
 		loader.call({ query: '?prefix=(&suffix=)&bar=baz' }, '(foo)'),
 		'module.exports = "" + require("foo") + "";',
 		'extra unrelated query param'
@@ -49,11 +54,6 @@ test('custom prefix/suffix', t => {
 		loader.call({ query: '?{prefix:"(",suffix:")"}' }, '(foo)'),
 		'module.exports = "" + require("foo") + "";',
 		'json query'
-	);
-	t.is(
-		loader.call({ query: '?prefix=%7B.&suffix=.%7D' }, '{.foo.} {bar}'),
-		'module.exports = "" + require("foo") + " {bar}";',
-		'escaping regex characters'
 	);
 });
 

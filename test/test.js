@@ -108,4 +108,9 @@ test('multiple replacements', t => {
 		loader.call({}, '{{foo}}\n{{bar}}'),
 		'module.exports = "" + require("foo") + "\\n" + require("bar") + "";'
 	);
+	t.is(
+		loader.call({}, '{{foo}}{{bar}}'),
+		'module.exports = "" + require("foo") + "" + require("bar") + "";',
+		'avoid merging multiple replacements on the same line'
+	);
 });

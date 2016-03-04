@@ -1,6 +1,6 @@
 {
   "name": "interpolate-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Webpack loader to interpolate require results.",
   "main": "index.js",
   "scripts": {

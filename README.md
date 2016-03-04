@@ -12,6 +12,24 @@ Usually, you will want to pipe the output from this loader into [`extract-loader
 
 `npm install --save-dev prop-loader`
 
+## Options
+
+### Prefix/suffix
+
+If you supply a query, it must contain both `prefix` and `suffix`.
+
+#### Examples
+
+`interpolate?prefix=(*&suffix=*)`
+
+`interpolate?prefix=%3C%25&suffix=%25%3E` (lodash-style `<%` and `%>`)
+
+#### Defaults
+
+`prefix`: `{{`
+
+`suffix`: `}}`
+
 ## Example Usage
 
 **webpack.config.js:**

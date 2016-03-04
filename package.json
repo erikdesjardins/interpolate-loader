@@ -1,6 +1,6 @@
 {
   "name": "interpolate-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Webpack loader to interpolate require results.",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,10 @@
     "url": "https://github.com/erikdesjardins/interpolate-loader/issues"
   },
   "homepage": "https://github.com/erikdesjardins/interpolate-loader#readme",
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5",
+    "loader-utils": "^0.2.12"
+  },
   "devDependencies": {
     "ava": "^0.12.0"
   }

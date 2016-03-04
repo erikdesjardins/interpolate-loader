@@ -6,7 +6,7 @@ Useful if you need to use a manifest file as an entry point to your application.
 
 Pairs well with [`prop-loader`](https://github.com/erikdesjardins/prop-loader) (see below).
 
-Usually, you will want to pipe the output from this loader into `extract-loader` (to resolve the imports) and then `file-loader` (to emit a non-js manifest file).
+Usually, you will want to pipe the output from this loader into [`extract-loader`](https://github.com/peerigon/extract-loader) (to resolve the imports) and then [`file-loader`](https://github.com/webpack/file-loader) (to emit a non-js manifest file).
 
 ## Installation
 

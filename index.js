@@ -44,7 +44,7 @@ module.exports = function(source) {
 	var requires = [];
 	var placeholder = '__INTERPOLATE_LOADER_' + String(Math.random()).slice(2) + '__';
 
-	var content = source.replace(new RegExp(prefix + '([^\\r\\n]+)' + suffix, 'g'), function(_, url) {
+	var content = source.replace(new RegExp(prefix + '([^\\r\\n]+?)' + suffix, 'g'), function(_, url) {
 		requires.push(utils.stringifyRequest(this, url.trim()));
 		return placeholder;
 	}.bind(this));

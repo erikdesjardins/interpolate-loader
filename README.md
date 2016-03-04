@@ -6,17 +6,19 @@ Useful if you need to use a manifest file as an entry point to your application.
 
 Pairs well with [`prop-loader`](https://github.com/erikdesjardins/prop-loader) (see below).
 
+Usually, you will want to pipe the output from this loader into `extract-loader` (to resolve the imports) and then `file-loader` (to emit a non-js manifest file).
+
 ## Installation
 
 `npm install --save-dev prop-loader`
 
-## Usage
+## Example Usage
 
 **webpack.config.js:**
 
 ```js
 module.exports = {
-  entry: 'interpolate!manifest.json',
+  entry: 'file!extract!interpolate!manifest.json',
   module: {
     loaders: [
       { test: /\.js$/i, loader: 'file?name=[name].[hash:6].[ext]' },
@@ -47,7 +49,7 @@ module.exports = {
 }
 ```
 
-### Output (example)
+### Output
 
 **manifest.json:**
 ```json

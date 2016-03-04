@@ -3,6 +3,8 @@
  * See LICENSE file in root directory for full license.
  */
 
+'use strict';
+
 module.exports = function(source) {
 	this.cacheable && this.cacheable();
 	var exec = this.exec;

@@ -10,7 +10,7 @@ Usually, you will want to pipe the output from this loader into [`extract-loader
 
 ## Installation
 
-`npm install --save-dev prop-loader`
+`npm install --save-dev interpolate-loader`
 
 ## Options
 

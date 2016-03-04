@@ -24,7 +24,7 @@ test('basic usage', t => {
 test('escaping', t => {
 	t.is(
 		loader.call({}, 'prop: "{{test}}"'),
-		'module.exports = "prop: \"" + require("test") + "\"";'
+		'module.exports = "prop: \\"" + require("test") + "\\"";'
 	);
 });
 

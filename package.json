@@ -4,7 +4,7 @@
   "description": "Webpack loader to interpolate require results.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava test/test.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/erikdesjardins/interpolate-loader/issues"
   },
-  "homepage": "https://github.com/erikdesjardins/interpolate-loader#readme"
+  "homepage": "https://github.com/erikdesjardins/interpolate-loader#readme",
+  "devDependencies": {
+    "ava": "^0.12.0"
+  }
 }

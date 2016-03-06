@@ -4,9 +4,9 @@ Webpack loader to interpolate require results.
 
 Useful if you need to use a manifest file as an entry point to your application.
 
-Pairs well with [`prop-loader`](https://github.com/erikdesjardins/prop-loader) (see below).
+Pairs well with [`prop-loader`](https://github.com/erikdesjardins/prop-loader) and [`entry-loader`](https://github.com/eoin/entry-loader) / [`spawn-loader`](https://github.com/erikdesjardins/spawn-loader) (see below).
 
-Usually, you will want to pipe the output from this loader into [`extract-loader`](https://github.com/peerigon/extract-loader) (to resolve the imports) and then [`file-loader`](https://github.com/webpack/file-loader) (to emit a non-js manifest file).
+Usually, you will want to pipe the output from this loader into [`extricate-loader`](https://github.com/erikdesjardins/extricate-loader) (to resolve the imports) and then [`file-loader`](https://github.com/webpack/file-loader) (to emit a non-js manifest file).
 
 ## Installation
 
@@ -36,11 +36,10 @@ If you supply a query, it must contain both `prefix` and `suffix`.
 
 ```js
 module.exports = {
-  entry: 'file?name=[name].[ext]!extract!interpolate!manifest.json',
+  entry: 'file?name=[name].[ext]!extricate!interpolate!manifest.json',
   module: {
     loaders: [
-      { test: /\.js$/i, loader: 'file?name=[name].[hash:6].[ext]' },
-      { test: /\.html$/, loaders: ['file?name=[name].[ext]', 'extract', 'html'] }
+      { test: /\.html$/, loaders: ['file?name=[name].[ext]', 'extricate', 'html'] }
     ]
   }
   // ...
@@ -56,7 +55,7 @@ module.exports = {
   "description": "{{prop?description!package.json}}",
   "background": {
     "scripts": [
-      "{{main.js}}"
+      "{{entry!main.js}}" // or {{spawn!main.js}}
     ]
   },
   "options_page": "{{options.html}}",

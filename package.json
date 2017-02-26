@@ -19,6 +19,9 @@
     "url": "https://github.com/erikdesjardins/interpolate-loader/issues"
   },
   "homepage": "https://github.com/erikdesjardins/interpolate-loader#readme",
+  "peerDependencies": {
+    "webpack": ">=2.2.0"
+  },
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "loader-utils": "^0.2.12"

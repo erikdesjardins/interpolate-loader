@@ -5,7 +5,7 @@
 
 'use strict';
 
-var utils = require('loader-utils');
+var loaderUtils = require('loader-utils');
 var escapeStringRegexp = require('escape-string-regexp');
 
 function validateQuery(query) {
@@ -31,19 +31,23 @@ function validateQuery(query) {
 	if (query.suffix && !query.prefix) {
 		throw new Error('suffix was supplied without a corresponding prefix');
 	}
+
+	return query;
 }
 
 module.exports = function(source) {
-	var query = utils.parseQuery(this.query);
-	validateQuery(query);
-	var prefix = escapeStringRegexp(query.prefix || '{{');
-	var suffix = escapeStringRegexp(query.suffix || '}}');
+	var query = Object.assign(
+		{ prefix: '{{', suffix: '}}' },
+		validateQuery(loaderUtils.getOptions(this) || {})
+	);
+	var prefix = escapeStringRegexp(query.prefix);
+	var suffix = escapeStringRegexp(query.suffix);
 
 	var requires = [];
 	var placeholder = '__INTERPOLATE_LOADER_' + String(Math.random()).slice(2) + '__';
 
 	var content = source.replace(new RegExp(prefix + '([^\\r\\n]+?)' + suffix, 'g'), function(_, url) {
-		requires.push(utils.stringifyRequest(this, url.trim()));
+		requires.push(loaderUtils.stringifyRequest(this, url.trim()));
 		return placeholder;
 	}.bind(this));
 

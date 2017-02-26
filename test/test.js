@@ -1,14 +1,6 @@
 import test from 'ava';
 import loader from '../index.js';
 
-test('calls cacheable', t => {
-	t.plan(1);
-	const context = {
-		cacheable: () => t.pass()
-	};
-	loader.call(context, '');
-});
-
 test('basic usage', t => {
 	t.is(
 		loader.call({}, '{{anotherLoader!hi.js}}'),

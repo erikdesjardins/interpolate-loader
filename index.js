@@ -34,8 +34,6 @@ function validateQuery(query) {
 }
 
 module.exports = function(source) {
-	this.cacheable && this.cacheable();
-
 	var query = utils.parseQuery(this.query);
 	validateQuery(query);
 	var prefix = escapeStringRegexp(query.prefix || '{{');

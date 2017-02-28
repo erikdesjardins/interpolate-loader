@@ -20,9 +20,9 @@ If you supply a query, it must contain both `prefix` and `suffix`.
 
 #### Examples
 
-`interpolate?prefix=(*&suffix=*)`
+`interpolate-loader?prefix=(*&suffix=*)`
 
-`interpolate?prefix=%3C%25&suffix=%25%3E` (lodash-style `<%` and `%>`)
+`interpolate-loader?prefix=%3C%25&suffix=%25%3E` (lodash-style `<%` and `%>`)
 
 #### Defaults
 
@@ -36,12 +36,17 @@ If you supply a query, it must contain both `prefix` and `suffix`.
 
 ```js
 module.exports = {
-  entry: 'file?name=[name].[ext]!extricate!interpolate!manifest.json',
+  entry: 'file-loader?name=[name].[ext]!extricate-loader!interpolate-loader!manifest.json',
   module: {
-    loaders: [
-      { test: /\.html$/, loaders: ['file?name=[name].[ext]', 'extricate', 'html'] }
-    ]
-  }
+    rules: [{
+      test: /\.html$/,
+      use: [
+        { loader: 'file-loader', options: { name: '[name].[ext]' } },
+        'extricate-loader',
+        'html-loader'
+      ]
+    }]
+  },
   // ...
 };
 ```
@@ -50,18 +55,18 @@ module.exports = {
 
 ```json
 {
-  "name": "{{prop?name!package.json}}",
-  "version": "{{prop?name!package.json}}",
-  "description": "{{prop?description!package.json}}",
+  "name": "{{prop-loader?name!package.json}}",
+  "version": "{{prop-loader?name!package.json}}",
+  "description": "{{prop-loader?description!package.json}}",
   "background": {
     "scripts": [
-      "{{entry!main.js}}" // or {{spawn!main.js}}
+      "{{entry-loader!main.js}}" // or {{spawn-loader!main.js}}
     ]
   },
   "options_page": "{{options.html}}",
   "icons": {
-    "48": "{{file!images/icon48.png}}",
-    "128": "{{file!images/icon128.png}}"
+    "48": "{{file-loader!images/icon48.png}}",
+    "128": "{{file-loader!images/icon128.png}}"
   }
 }
 ```

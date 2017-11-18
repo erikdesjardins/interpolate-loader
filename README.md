@@ -35,8 +35,11 @@ If you supply a query, it must contain both `prefix` and `suffix`.
 **webpack.config.js:**
 
 ```js
+var InertEntryPlugin = require('inert-entry-webpack-plugin'); // maybe unnecessary, see below
+
 module.exports = {
-  entry: 'file-loader?name=[name].[ext]!extricate-loader!interpolate-loader!manifest.json',
+  entry: 'extricate-loader!interpolate-loader!manifest.json',
+  output: { filename: 'manifest.json' },
   module: {
     rules: [{
       test: /\.html$/,
@@ -47,7 +50,12 @@ module.exports = {
       ]
     }]
   },
-  // ...
+  plugins: [
+  	// This is required to use manifest.json as the entry point.
+  	// If the entry point is a .js file and this loader is only used
+  	// for subresources, then it is not necessary.
+  	new InertEntryPlugin()
+  ],
 };
 ```
 

@@ -1,4 +1,4 @@
-# interpolate-loader [![Build Status](https://travis-ci.org/erikdesjardins/interpolate-loader.svg?branch=master)](https://travis-ci.org/erikdesjardins/interpolate-loader)
+# interpolate-loader
 
 Webpack loader to interpolate require results.
 

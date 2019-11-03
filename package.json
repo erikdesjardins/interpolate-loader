@@ -23,10 +23,10 @@
     "webpack": ">=3.0.0"
   },
   "dependencies": {
-    "escape-string-regexp": "^1.0.5",
+    "escape-string-regexp": "^2.0.0",
     "loader-utils": "^1.1.0"
   },
   "devDependencies": {
-    "ava": "^0.21.0"
+    "ava": "^2.4.0"
   }
 }
